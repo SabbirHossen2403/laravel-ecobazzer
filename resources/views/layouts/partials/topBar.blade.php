@@ -1,7 +1,7 @@
             <div class="top-bar">
                     <!-- BEGIN: Breadcrumb -->
                     <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="index.html">Application</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> 
-                        <a href="index.html" class="breadcrumb--active">Dashboard</a> </div>
+                        <a href="#" class="breadcrumb--active">{{ breadcrump() }}</a> </div>
                     <!-- END: Breadcrumb -->
                     <!-- BEGIN: Search -->
                     <div class="intro-x position-relative me-3 me-sm-6">

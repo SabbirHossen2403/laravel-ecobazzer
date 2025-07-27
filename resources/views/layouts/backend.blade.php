@@ -10,6 +10,10 @@
         <meta name="author" content="LEFT4CODE">
         <title>Dashboard - Rubick - Bootstrap HTML Admin Template</title>
         <!-- BEGIN: CSS Assets-->
+        <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+        <link
+        href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet"/>
         <link rel="stylesheet" href="{{ asset('backendstyle/css/dist/css/app.css') }}"/>
         <!-- END: CSS Assets-->
     </head>
@@ -562,9 +566,15 @@
         </div>
         <!-- END: Dark Mode Switcher-->
         <!-- BEGIN: JS Assets-->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
          <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
         <script src="{{ asset('backendstyle/css/dist/js/app.js') }}"></script>
+
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+        @stack('backend_scripts')
         <!-- END: JS Assets-->
     </body>
 </html>

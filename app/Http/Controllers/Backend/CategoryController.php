@@ -10,4 +10,10 @@ class CategoryController extends Controller
     function index() {
         return view('backend.category.index');
     }
+
+      public function create()
+    {
+        return view('backend.category.create');
+    }
+
 }

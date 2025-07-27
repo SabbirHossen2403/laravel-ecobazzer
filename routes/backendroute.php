@@ -12,7 +12,7 @@ Auth::routes();
 
 
 Route::name('backend.')->middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/backend/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 
@@ -20,6 +20,9 @@ Route::name('backend.')->middleware('auth')->group(function () {
    Route::controller(CategoryController::class)->name('category.')->prefix('/backend/category')->group( function () {
 
     Route::get( '/' , 'index')->name('index');
+    Route::get( '/create' , 'create')->name('create');
+
+
     });
 
 
