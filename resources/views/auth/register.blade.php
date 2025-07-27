@@ -310,26 +310,35 @@
                     <h1>Create Account</h1>
                     <form  method="POST" action="{{ route('register') }}" id="signupForm">
                         @csrf
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                            <div class="error" id="email-error">Please enter a valid email address</div>
-                        </div>
+
 
                         <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" >
+                            <div class="error" id="name-error">Please enter your name</div>
+                            
+
+
+                        <div class="form-group mt-3">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" >
+                            <div class="error" id="email-error">Please enter a valid email address</div>
+                        </div>
+                      
+                        <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password" required>
+                            <input type="password" id="password" name="password" >
                             <div class="error" id="password-error">Password must be at least 8 characters</div>
                         </div>
 
                         <div class="form-group">
-                            <label for="confirm-password">Confirm Password</label>
-                            <input type="password" id="confirm-password" name="confirm-password" required>
-                            <div class="error" id="confirm-error">Passwords do not match</div>
+                            <label for="password_confirmation ">Confirm Password</label>
+                            <input type="password" id="password_confirmation " name="password_confirmation" >
+                            <div class="error" id="password_confirmation ">Passwords do not match</div>
                         </div>
 
                         <div class="checkbox-group">
-                            <input type="checkbox" id="terms" name="terms" required>
+                            <input type="checkbox" id="terms" name="terms" >
                             <label for="terms" id="accept">Accept all terms & Conditions</label>
                         </div>
 
@@ -441,6 +450,11 @@
 
 
 
+
+
+    </main>
+
+
         <footer class="shopery-footer">
             <div class="container">
                 <div class="footer-content">
@@ -503,9 +517,6 @@
 
 
 
-
-
-    </main>
 
 
 

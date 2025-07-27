@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\FrontendController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontendController;
 
 
 Route::controller(FrontendController::class)->name('frontend.')->group(function(){
@@ -10,10 +11,5 @@ Route::controller(FrontendController::class)->name('frontend.')->group(function(
 });
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
