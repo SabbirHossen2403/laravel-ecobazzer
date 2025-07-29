@@ -25,6 +25,7 @@ Route::name('backend.')->middleware('auth')->group(function () {
     Route::get( '/status-update/{id}' , 'statusUpdate')->name('status.update');
     Route::get( '/edit/{id}' , 'edit')->name('edit');
     Route::post('/category/update/{id}',  'update')->name('update');
+    Route::post('/category/delete/{id}',  'delete')->name('delete');
 
 
 

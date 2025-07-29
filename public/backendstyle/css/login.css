@@ -563,7 +563,7 @@ footer .menu {
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: -2px;
             font-weight: bold;
             color: #555;
         }

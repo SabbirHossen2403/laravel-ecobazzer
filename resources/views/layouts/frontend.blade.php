@@ -180,24 +180,26 @@
                   <li >
                     <a class="active" href=""><iconify-icon icon="ic:round-menu" width="24" height="24"></iconify-icon>All Categories<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a>
                   
-                 <ul class="categorySubmenu">
-                  <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/896/896530.png" alt="">
-                      Electronics</a></li>
-                  <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5564/5564823.png" alt="">
-                      Furniture</a></li>
-                  <li><a href="#"> <img src="https://cdn-icons-png.flaticon.com/512/3050/3050198.png" alt="">Fashion</a>
-                  </li>
-                  <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3081/3081993.png" alt="">Toys</a>
-                  </li>
-                  <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/6456/6456651.png" alt="">Shoes</a>
-                  </li>
-                  <li><a href="#"> <img src="https://cdn-icons-png.flaticon.com/512/3728/3728783.png"
-                        alt="">Festival</a></li>
-                </ul>
+               <ul class="categorySubmenu">
+    @foreach($categories as $category)
+        <li>
+            <a href="#">
+                <img 
+                    src="{{ $category->category_icon ? asset('storage/' . $category->category_icon) : asset('images/default-icon.png') }}" 
+                    alt="" 
+                    style="width: 24px; height: 24px; object-fit: contain; margin-right: 5px;"
+                >
+                {{ ucfirst($category->category_name) }}
+
+            </a>
+        </li>
+    @endforeach
+</ul>
+
                   
                   </li>
                   <li><a  href="" class="active1" >Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                  <li><a href="./shop.html">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
+                  <li><a href="{{ route('frontend.shop') }}">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="./16_Checkout.html">Checkout<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="./Details.html">Details<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="">About Us</a></li>

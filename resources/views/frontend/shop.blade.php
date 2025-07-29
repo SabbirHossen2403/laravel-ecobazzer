@@ -511,7 +511,7 @@
               </div>
               <div class="productCard">
                 <div class="thumbnail">
-                  <a href="#"><img src="{{ asset('frontendstyle/images/6png') }}.png') }}" alt="Image 1" class="img-fluid"></a>
+                  <a href="#"><img src="{{ asset('frontendstyle/images/6.png') }}" alt="Image 1" class="img-fluid"></a>
                   <ul class="quickLinks">
                     <li><a href="#"><iconify-icon icon="prime:heart" width="24" height="24"></iconify-icon></a></li>
                     <li><a href="#"><iconify-icon icon="proicons:eye" width="24" height="24"></iconify-icon></a></li>

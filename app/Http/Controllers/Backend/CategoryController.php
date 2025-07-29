@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -53,7 +54,7 @@ class CategoryController extends Controller
         'category_icon' => $path,
     ]);
 
-       return redirect()->route('backend.category.index')->with('success', 'Category created successfully!');
+       return redirect()->route('backend.category.index')->with('success', "{$request->category_name} Category created successfully!");
 
     }
 
@@ -99,6 +100,19 @@ class CategoryController extends Controller
     return redirect()->route('backend.category.index')->with('success', 'Category updated successfully!');
 }
 
+
+
+    public function delete($id)
+    {
+        $category = Category::findOrFail($id);
+         $name = $category->category_name;
+
+      if ($category->category_icon && Storage::disk('public')->exists($category->category_icon)) {
+        Storage::disk('public')->delete($category->category_icon);
+    }
+        $category->delete();
+        return redirect()->route('backend.category.index')->with('success',  ucfirst($name) .  "  Category  deleted successfully!");
+    }
 
 
 }

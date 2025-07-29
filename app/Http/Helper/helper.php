@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
+
 
     if(!function_exists('getProfileImage')) {
         function getProfileImage($name)
