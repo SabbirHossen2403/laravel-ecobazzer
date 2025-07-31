@@ -1,0 +1,271 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+span {
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+:root {
+	--gren-gray-scale-900: #002603;
+	--gren-gray-scale-800: #173b1a;
+	--gren-gray-scale-700: #2b572e;
+	--gren-gray-scale-600: #406b42;
+	--gren-gray-scale-500: #618062;
+	--gren-gray-scale-400: #7a997c;
+	--gren-gray-scale-300: #96b297;
+	--gren-gray-scale-200: #b4ccb4;
+	--gren-gray-scale-100: #dae5da;
+	--gren-gray-scale-50: #edf2ee;
+	--gray-scale-gray-–-900: #1a1a1a;
+	--gray-scale-gray-–-800: #333;
+	--gray-scale-gray-–-700: #4d4d4d;
+	--gray-scale-gray-–-600: #666;
+	--gray-scale-gray-–-500: #808080;
+	--gray-scale-gray-–-400: #999;
+	--gray-scale-gray-–-300: #b3b3b3;
+	--gray-scale-gray-–-200: #ccc;
+	--gray-scale-gray-–-100: #e6e6e6;
+	--gray-scale-gray-–-50: #f2f2f2;
+	--gray-scale-white: #fff;
+	--branding-success-bright: #84d187;
+	--branding-success: #00b207;
+	--branding-success-dark: #2c742f;
+	--branding-warning: #ff8a00;
+	--branding-error: #ea4b48;
+	--font-family: "Poppins", sans-serif;
+	--second-family: "Caveat", cursive;
+}
+
+body {
+	font-family: var(--font-family);
+}
+
+.lineheight {
+	line-height: 0;
+}
+
+.btn1 {
+	border-radius: 43px;
+	padding: 16px 40px;
+	width: 200px;
+	height: 51px;
+	background: var(--branding-success);
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 120%;
+	display: inline-flex;
+	align-items: center;
+	color: var(--gray-scale-white);
+}
+
+.btn1:hover {
+	border-radius: 43px;
+	padding: 16px 40px;
+	width: 200px;
+	height: 51px;
+	background: var(--branding-success);
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 120%;
+	display: inline-flex;
+	align-items: center;
+	color: var(--gray-scale-white);
+}
+
+.btn-span {
+	margin-left: 10px;
+	color: var(--gray-scale-white);
+}
+
+.leftArrow,
+.rightArrow {
+	width: 45px;
+	height: 45px;
+	border: 1px solid var(--gray-scale-gray-–-100);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	color: var(--gray-scale-gray-–-900);
+	cursor: pointer;
+	transition: 0.25s ease-in;
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+	background-color: var(--branding-success);
+	color: white;
+}
+
+#banner .container {
+	position: relative;
+}
+
+.slick-dots {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+	gap: 8px;
+	bottom: -50px;
+}
+
+.slick-dots button {
+	background-color: var(--gren-gray-scale-200);
+	border: none;
+	width: 8px;
+	height: 8px;
+	border-radius: 50px;
+	color: transparent;
+	transition: 0.35s ease-in;
+}
+
+.slick-dots .slick-active button {
+	width: 16px;
+	background-color: var(--branding-success);
+}
+
+/* common css end  */
+/* From Uiverse.io by adamgiebl */
+.cssbuttons-io-button {
+	max-width: 180px;
+	background: var(--branding-success);
+	color: white;
+	font-family: inherit;
+	padding: 0.35em;
+	padding-left: 1.2em;
+	font-size: 17px;
+	border-radius: 10em;
+	border: none;
+	letter-spacing: 0.05em;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	position: relative;
+	height: 2.8em;
+	padding-right: 3.3em;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: 500;
+	/* box-shadow: 0 0 1.6em  hsla(191, 98%, 56%, 0.3); */
+	transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.cssbuttons-io-button .icon {
+	background: white;
+	margin-left: 1em;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2.2em;
+	width: 2.2em;
+	border-radius: 10em;
+	right: 0.3em;
+	transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.cssbuttons-io-button:hover .icon {
+	width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+	width: 1.1em;
+	transition: transform 0.3s;
+	color: var(--branding-success);
+}
+
+.cssbuttons-io-button:hover .icon svg {
+	transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+	transform: scale(0.95);
+}
+
+/* banner css start  */
+#banner {
+    background: var(--gray-scale-white);
+    padding: 50px 0;
+    margin-top: 50px;
+}
+
+#banner .rightsite {
+	padding-top: 100px;
+	padding-left: 80px;
+}
+
+#banner .rightsite .welcome {
+	font-family: var(--second-family);
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 100%;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--branding-success);
+}
+
+#banner .rightsite h1 {
+	font-weight: 600;
+	font-size: 56px;
+	line-height: 120%;
+	color: var(--gren-gray-scale-900);
+}
+
+#banner .rightsite p {
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 150%;
+	color: var(--gren-gray-scale-500);
+	margin-top: 20px;
+	margin-bottom: 32px;
+}
+
+#banner .leftArrow,
+#banner .rightArrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#banner .leftArrow {
+	left: 0;
+}
+
+#banner .rightArrow {
+	right: 0;
+}
+
+#banner .container {
+	position: relative;
+}
+
+/* banner css end  */

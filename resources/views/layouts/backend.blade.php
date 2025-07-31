@@ -19,6 +19,7 @@
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
         rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('backendstyle/css/dist/css/app.css') }}" />
+    @stack('backend_style')
     <!-- END: CSS Assets-->
 </head>
 <!-- END: Head -->

@@ -35,10 +35,10 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
 
-                                        <li> <a href="" class="dropdown-item"> <i data-feather="eye"
+                                        <li> <a href="{{ route('backend.banner.banner_view', $banner->id)}}" class="dropdown-item"> <i data-feather="eye"
                                                     class="w-4 h-4 text-gray-700 dark-text-gray-300 me-2"></i> View </a>
                                         </li>
-                                        <li> <a href="{{ route('backend.banner.edit', $banner->id) }}" class="dropdown-item"> <i data-feather="edit"
+                                        <li> <a href="{{ route('backend.banner.banner_edit', $banner->id) }}" class="dropdown-item"> <i data-feather="edit"
                                                     class="w-4 h-4 text-gray-700 dark-text-gray-300 me-2"></i> Edit </a>
                                         </li>
 

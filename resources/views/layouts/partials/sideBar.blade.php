@@ -47,3 +47,10 @@
                         </a>
                     </li>
                    
+                    <li>
+                        <a href="{{ route('backend.myservice.myservice_index') }}" class="side-menu {{ request()->routeIs('backend.myservice.*') ? 'side-menu--active' : '' }}">
+                            <div class="side-menu__icon"> <i data-feather="tool"></i> </div>
+                            <div class="side-menu__title"> Service </div>
+                        </a>
+                    </li>
+                   
