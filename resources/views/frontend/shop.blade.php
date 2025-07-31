@@ -13,11 +13,11 @@
 <section id="banner">
 <div class="container">
 <ul class="manu d-flex">
-  <li><a href="./homepage4.html"><iconify-icon icon="material-symbols:home-outline" width="24" height="24"></iconify-icon></a></li>
+  <li><a href=" {{ route('frontend.index')}} "><iconify-icon icon="material-symbols:home-outline" width="24" height="24"></iconify-icon></a></li>
   <li><iconify-icon icon="weui:arrow-filled" width="12" height="24"></iconify-icon></li>
   <li><a href="">Categories</a></li>
   <li><iconify-icon icon="weui:arrow-filled" width="12" height="24"></iconify-icon></li>
-  <li><a class="green" href="">Vegetables</a></li>
+  <li><a class="green" href="">Shop</a></li>
 </ul>
 </div>
 </section>

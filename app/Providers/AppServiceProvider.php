@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         // categorize the frontend routes
         View::composer(['frontend.*'], function ($view) {
     $view->with('categories', Category::where('status', 1)->orderBy('id', 'DESC')->get());
+    $view->with('banners', \App\Models\Banner::where('status', 1)->orderBy('id', 'DESC')->get());
 });
 
         

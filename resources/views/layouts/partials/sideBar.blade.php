@@ -36,8 +36,14 @@
                     </li>
                     <li>
                         <a href="{{ route('backend.category.index') }}" class="side-menu {{ request()->routeIs('backend.category.*') ? 'side-menu--active' : '' }}">
-                            <div class="side-menu__icon"> <i data-feather="home"></i> </div>
+                            <div class="side-menu__icon"> <i class="fa-solid fa-list fa-lg"></i> </div>
                             <div class="side-menu__title"> Category </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('backend.banner.banner_index') }}" class="side-menu {{ request()->routeIs('backend.banner.*') ? 'side-menu--active' : '' }}">
+                            <div class="side-menu__icon"> <i class="fa-solid fa-image fa-lg"></i> </div>
+                            <div class="side-menu__title"> Banner </div>
                         </a>
                     </li>
                    

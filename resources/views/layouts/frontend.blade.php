@@ -158,7 +158,7 @@
         <div class="offcanvas-body">
           <div>
             <ul class="list">
-              <li><a href="./homepage4.html">HOME</a></li>
+              <li><a href="{{ route('frontend.index')}}">HOME</a></li>
               <li><a href="./shop.html">Shop</a></li>
               <li><a href="./Details.html">Details</a></li>
               <li><a href="./16_Checkout.html">Checkout</a></li>
@@ -198,7 +198,7 @@
 
                   
                   </li>
-                  <li><a  href="" class="active1" >Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
+                  <li><a  href="{{ route('frontend.index')}}" class="active1" >Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="{{ route('frontend.shop') }}">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="./16_Checkout.html">Checkout<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="./Details.html">Details<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>

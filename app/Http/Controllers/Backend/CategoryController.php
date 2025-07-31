@@ -102,17 +102,7 @@ class CategoryController extends Controller
 
 
 
-    public function delete($id)
-    {
-        $category = Category::findOrFail($id);
-         $name = $category->category_name;
-
-      if ($category->category_icon && Storage::disk('public')->exists($category->category_icon)) {
-        Storage::disk('public')->delete($category->category_icon);
-    }
-        $category->delete();
-        return redirect()->route('backend.category.index')->with('success',  ucfirst($name) .  "  Category  deleted successfully!");
-    }
+  
 
 
 }
