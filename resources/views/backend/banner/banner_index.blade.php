@@ -22,7 +22,7 @@
                 @foreach ($banners as $key => $banner)
                     <tr>
                         <td class="text-center"> {{ ++$key }}</td>
-                        <td class="text-center"> {{ $banner->banner_title }}</td>
+                        <td class="text-center"> {{  ucwords($banner->banner_title) }}</td>
                         <td class="text-center ">
                             <img class="mx-auto" width="100" src="{{ getimage($banner->banner_image) }}" alt="">
                         </td>

@@ -27,7 +27,7 @@
                         <td class="text-center"> {{ ++$key }} </td>
                         <td class="d-flex align-items-center gap-2">
                             <img width="60" src="{{ getimage($category->category_icon) }}" alt="">
-                            {{ $category->category_name }}
+                            {{ ucwords($category->category_name) }}
                         </td>
 
                         <td class="text-center">

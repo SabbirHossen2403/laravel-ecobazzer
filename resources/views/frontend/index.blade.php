@@ -68,14 +68,16 @@
  <section id="cards">
   <div class="container px-0">
     <div class="row g-0"> 
+      @foreach ($services as $service)
       <div class="col-lg-3 col-md-6  col-sm-6  col-12 p-0"> 
           <div class="card h-100"> 
-            <img src="{{ asset('frontendstyle/images/Icon.png') }}" alt="">
-            <h3>Free Shipping</h3>
-            <p>Free shipping with discount</p>
+            <img src="{{ $service->service_image ?  asset('storage/' . $service->service_image ) : asset('storage/default.jpg') }}" alt="">
+            <h3>{{ $service->service_name }}</h3>
+            <p>{{ $service->service_description}}</p>
           </div>
-      </div>
-      <div class="col-lg-3 col-md-6  col-sm-6  col-12 p-0">
+        </div>
+        @endforeach
+      {{-- <div class="col-lg-3 col-md-6  col-sm-6  col-12 p-0">
           <div class="card h-100">
             <img src="{{ asset('frontendstyle/images/Icon (1).png') }}" alt="">
             <h3>Great Support 24/7</h3>
@@ -95,7 +97,7 @@
             <h3>Money-Back Guarantee</h3>
             <p>30 days money-back guarantee</p>
           </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 </section>

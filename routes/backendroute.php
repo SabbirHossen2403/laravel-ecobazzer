@@ -54,8 +54,9 @@ Route::controller(ServiceController::class)->name('myservice.')->prefix('/backen
 
     Route::get( '/' , 'myservice_index')->name('myservice_index');
     Route::get( '/create' , 'myservice_create')->name('myservice_create');
-    // Route::post( '/store' , 'myservice_store')->name('myservice_store');
+    Route::post( '/store' , 'myservice_store')->name('myservice_store');
     Route::get( '/status-update/{id}' , 'myservice_status_update')->name('myservice_status_update');
+    Route::post( '/myservice/delete/{id}' , 'myservice_delete')->name('myservice_delete');
     // Route::get( '/edit/{id}' , 'myservice_edit')->name('myservice_edit');
     // Route::post('/update/{id}',  'myservice_update')->name('myservice_update');
 
