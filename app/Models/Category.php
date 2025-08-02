@@ -13,4 +13,9 @@ class Category extends Model
         'status',
     ];
 
+    function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
 }

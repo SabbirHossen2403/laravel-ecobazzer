@@ -27,5 +27,10 @@ class FrontendController extends Controller
 //     return view('frontend.AllCategory', compact('categories'));
 // }
 
+    public function categoryArchive($category_url)
+    {
+        dd($category_url);
+    }
+
 
 }

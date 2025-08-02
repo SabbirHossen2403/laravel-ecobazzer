@@ -183,7 +183,7 @@
                <ul class="categorySubmenu">
     @foreach($categories as $category)
         <li>
-            <a href="#">
+            <a href="{{ route('frontend.category_archive', $category->category_url) }}" >
                 <img 
                     src="{{ $category->category_icon ? asset('storage/' . $category->category_icon) : asset('images/default-icon.png') }}" 
                     alt="" 
