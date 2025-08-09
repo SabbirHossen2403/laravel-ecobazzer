@@ -18,6 +18,9 @@ class FrontendController extends Controller
         return view('frontend.shop');
     }
 
+    function details() {
+        return view('frontend.details');
+    }
 
 
 // public function AllCategory()

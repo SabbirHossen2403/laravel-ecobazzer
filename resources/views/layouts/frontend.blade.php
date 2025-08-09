@@ -201,7 +201,7 @@
                   <li><a  href="{{ route('frontend.index')}}" class="active1" >Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="{{ route('frontend.shop') }}">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="./16_Checkout.html">Checkout<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                  <li><a href="./Details.html">Details<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
+                  <li><a href="{{ route('frontend.details')}}">Details<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="">About Us</a></li>
                   <li><a href="">Contact Us</a></li>
                 </ul>

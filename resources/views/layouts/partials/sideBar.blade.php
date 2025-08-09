@@ -41,6 +41,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('backend.brand.index') }}" class="side-menu {{ request()->routeIs('backend.brand.*') ? 'side-menu--active' : '' }}">
+                            <div class="side-menu__icon"> <i class="fa-solid fa-list fa-lg"></i> </div>
+                            <div class="side-menu__title"> Brand </div>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('backend.banner.banner_index') }}" class="side-menu {{ request()->routeIs('backend.banner.*') ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon"> <i class="fa-solid fa-image fa-lg"></i> </div>
                             <div class="side-menu__title"> Banner </div>
@@ -51,6 +57,12 @@
                         <a href="{{ route('backend.myservice.myservice_index') }}" class="side-menu {{ request()->routeIs('backend.myservice.*') ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon"> <i data-feather="tool"></i> </div>
                             <div class="side-menu__title"> Service </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('backend.product.index') }}" class="side-menu {{ request()->routeIs('backend.product.*') ? 'side-menu--active' : '' }}">
+                            <div class="side-menu__icon"> <i data-feather="tool"></i> </div>
+                            <div class="side-menu__title"> Product </div>
                         </a>
                     </li>
                    

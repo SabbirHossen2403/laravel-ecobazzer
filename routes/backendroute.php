@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -27,6 +29,19 @@ Route::name('backend.')->middleware('auth')->group(function () {
     Route::get( '/status-update/{id}' , 'statusUpdate')->name('status.update');
     Route::get( '/edit/{id}' , 'edit')->name('edit');
     Route::post('/category/update/{id}',  'update')->name('update');
+
+
+
+    });
+        //* category 
+   Route::controller(BrandController::class)->name('brand.')->prefix('/backend/brand')->group( function () {
+
+    Route::get( '/' , 'index')->name('index');
+    Route::get( '/create' , 'create')->name('create');
+    Route::post( '/store' , 'store')->name('store');
+    Route::get( '/status-update/{id}' , 'statusUpdate')->name('status.update');
+    Route::get( '/edit/{id}' , 'edit')->name('edit');
+    Route::post('/brand/update/{id}',  'update')->name('update');
 
 
 
@@ -61,6 +76,25 @@ Route::controller(ServiceController::class)->name('myservice.')->prefix('/backen
     // Route::post('/update/{id}',  'myservice_update')->name('myservice_update');
 
 });
+
+
+
+
+        //* product 
+   Route::controller(ProductController::class)->name('product.')->prefix('/backend/product')->group( function () {
+
+    Route::get( '/' , 'index')->name('index');
+    Route::get( '/create' , 'create')->name('create');
+    Route::post( '/store' , 'store')->name('store');
+    Route::get( '/status-update/{id}' , 'statusUpdate')->name('status.update');
+    Route::get( '/stock-update/{id}' , 'stockUpdate')->name('stock.update');
+    Route::get( '/featured-update/{id}' , 'featuredUpdate')->name('featured.update');
+    Route::get( '/edit/{id}' , 'edit')->name('edit');
+    Route::post('/product/update/{id}',  'update')->name('update');
+
+
+
+    });
 
     
 });

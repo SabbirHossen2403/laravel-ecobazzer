@@ -1,307 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecobazzer</title>
-    <link rel="shortcut icon" href="./images/plant 1.png" type="image/x-icon">
-    <link rel="stylesheet" href="./css/slick.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/all.min.css">
-    <link rel="stylesheet" href="./css/Details.css">
-    <link rel="stylesheet" href="./css/Detailsrespon.css">
-</head>
-<body>
-    
-<header>
-    <!-- topheader starts -->
-    <div class="topheader">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 rightsite d-flex text-center">
-            <iconify-icon
-              icon="mdi:location"
-              width="30"
-              height="30"
-            ></iconify-icon>
-            <p>Store Location: Lincoln- 344, Illinois, Chicago, USA</p>
-          </div>
-          <div class="col-lg-4 text-center liftsite d-flex d-none d-lg-block">
-            <ul>
-              <li>
-                <select>
-                  <option value="ENG">ENG</option>
-                  <option value="BNG">BNG</option>
-                </select>
-              </li>
-              <li>
-                <select>
-                  <option value="USD">USD</option>
-                  <option value="BNG">BNG</option>
-                </select>
-              </li>
-              <li class="lineheight">
-                <iconify-icon
-                  icon="fluent:divider-tall-24-regular"
-                  width="24"
-                  height="24"
-                ></iconify-icon>
-              </li>
-  
-              <li>
-                <a href="">Sign In / Sign Up</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- topheader ends -->
-  
-    <!-- midelheader starts -->
-    <div class="midelheader">
-      <div class="container">
-        <div class="row">
-          <div
-            class="col-lg-2 col-6 order-1 order-lg-1 justify-content-start"
-          >
-            <a href=""><img src="./images/Logo (1).png" alt="" /></a>
-          </div>
-          <div class="col-lg-6 order-3 order-lg-2">
-            <form class="d-flex" role="search">
-              <input
-                class="form-control"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
-          <div
-            class="col-lg-4 col-6 text-end order-2 order-lg-3 d-none d-lg-block"
-          >
-            <ul class="d-flex">
-              <li>
-                <iconify-icon
-                  icon="solar:heart-outline"
-                  width="40"
-                  height="40"
-                ></iconify-icon>
-              </li>
-              <li class="lineheight">
-                <iconify-icon
-                  icon="fluent:divider-tall-24-regular"
-                  width="40"
-                  height="40"
-                ></iconify-icon>
-              </li>
-              <li class="cartprent"><a href="./cart.html">
-                <iconify-icon
-                  icon="solar:bag-outline"
-                  width="40"
-                  height="40"
-                ></iconify-icon>
-                <span class="cartcounter">2</span>
-              </a>  </li>
-  
-              <li class="para1"><a href="./cart.html">
-                <p>Shopping cart:</p>
-                <h5>$57.00</h5>
-              </a></li>
-            </ul>
-          </div>
-          <div
-            class="option col-6 d-block d-lg-none order-2 order-lg-3 text-end"
-          >
-            <ul class="">
-              <li>
-                <a
-                  data-bs-toggle="offcanvas"
-                  href="#offcanvasExample"
-                  role="button"
-                  aria-controls="offcanvasExample"
-                  ><iconify-icon
-                    icon="tabler:menu-3"
-                    width="34"
-                    height="34"
-                  ></iconify-icon
-                ></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <!-- midelheader ends -->
-    <!-- offcanvas start -->
-    <div
-      class="offcanvas offcanvas-start"
-      tabindex="-1"
-      id="offcanvasExample"
-      aria-labelledby="offcanvasExampleLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel"><img src="./images/" alt=""></h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <div>
-          <ul class="list">
-            <li><a href="./homepage4.html">HOME</a></li>
-            <li><a href="./shop.html">Shop</a></li>
-            <li><a href="./Details.html">Details</a></li>
-            <li><a href="./16_Checkout.html">Checkout</a></li>
-            <li><a href="">About us</a></li>
-            <li><a href="">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- offcanvas ends -->
-  
-    <!-- buttomheader -->
-    <div id="buttomheader" class="d-none d-lg-block">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-9">
-            <div class="liftmanu">
-              <ul class="d-flex align-items-center ">
-                <li >
-                  <a class="active" href=""><iconify-icon icon="ic:round-menu" width="24" height="24"></iconify-icon>All Categories<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a>
-                
-               <ul class="categorySubmenu">
-                <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/896/896530.png" alt="">
-                    Electronics</a></li>
-                <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5564/5564823.png" alt="">
-                    Furniture</a></li>
-                <li><a href="#"> <img src="https://cdn-icons-png.flaticon.com/512/3050/3050198.png" alt="">Fashion</a>
-                </li>
-                <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3081/3081993.png" alt="">Toys</a>
-                </li>
-                <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/6456/6456651.png" alt="">Shoes</a>
-                </li>
-                <li><a href="#"> <img src="https://cdn-icons-png.flaticon.com/512/3728/3728783.png"
-                      alt="">Festival</a></li>
-              </ul>
-                
-                </li>
-                <li><a href="./homepage4.html">Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                <li><a  href="./shop.html">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                <li><a class="active1" href="./Details.html">Details<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                <li><a href="./16_Checkout.html">Checkout<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <a href="tel:2195550114" class="d-flex align-items-center contactNum">
-              <iconify-icon icon="line-md:phone-call" width="25" height="25"></iconify-icon>
-              (219) 555-0114
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <!-- footer  -->
-    <footer class="d-block d-md-none d-lg-none">
-      <div class=" row menu">
-        <div class="col-3">
-        <a href="./homepage4.html" class="link">
-          <span class="link-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="192"
-              height="192"
-              fill="currentColor"
-              viewBox="0 0 256 256"
-            >
-              <rect width="256" height="256" fill="none"></rect>
-              <path
-                d="M213.3815,109.61945,133.376,36.88436a8,8,0,0,0-10.76339.00036l-79.9945,72.73477A8,8,0,0,0,40,115.53855V208a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V115.53887A8,8,0,0,0,213.3815,109.61945Z"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></path>
-            </svg>
-          </span>
-          <span class="link-title">Home</span>
-        </a>
-      </div>
-      <div class="col-3">
-  
-        <a href="#" class="link">
-          <span class="link-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12.001 4.529a6 6 0 0 1 8.242.228a6 6 0 0 1 .236 8.236l-8.48 8.492l-8.478-8.492a6 6 0 0 1 8.48-8.464m6.826 1.641a4 4 0 0 0-5.49-.153l-1.335 1.198l-1.336-1.197a4 4 0 0 0-5.686 5.605L12 18.654l7.02-7.03a4 4 0 0 0-.193-5.454"/></svg>         </span>
-          <span class="link-title">Like</span>
-        </a>
-      </div>
-  
-      <div class="col-3">
-  
-        <a href="./cart.html" class="link">
-          <span class="link-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M0 1h4.764l.545 2h18.078l-3.666 11H7.78l-.5 2H22v2H4.72l1.246-4.989L3.236 3H0zm7.764 11h10.515l2.334-7H5.855zM4 21a2 2 0 1 1 4 0a2 2 0 0 1-4 0m14 0a2 2 0 1 1 4 0a2 2 0 0 1-4 0"/></svg>
-          </span>
-          <span class="link-title">cart</span>
-        </a>
-      </div>
-        <div class="col-3">
-  
-        <a href="#" class="link">
-          <span class="link-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="192"
-              height="192"
-              fill="currentColor"
-              viewBox="0 0 256 256"
-            >
-              <rect width="256" height="256" fill="none"></rect>
-              <circle
-                cx="128"
-                cy="96"
-                r="64"
-                fill="none"
-                stroke="currentColor"
-                stroke-miterlimit="10"
-                stroke-width="16"
-              ></circle>
-              <path
-                d="M30.989,215.99064a112.03731,112.03731,0,0,1,194.02311.002"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></path>
-            </svg>
-          </span>
-          <span class="link-title">Profile</span>
-        </a>
-      </div>
-      </div>
-      
-    </footer>
-  
-    <!-- footer ends -->
-  
-    <!-- buttomheader ends -->
-  </header>
+@extends('layouts.frontend')
 
-  <main>
+@push('style')
+    <link rel="stylesheet" href="{{ asset('frontendstyle/css/Details.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('frontendstyle/css/Detailsresponsive.css') }}"> 
+@endpush
+@section('content')
+    
 
     <!-- banner -->
 
@@ -331,17 +35,17 @@
             <div class="col-lg-5  leftsite">
                 <div class="product-slider-wrapper"> <!-- Added wrapper for positioning -->
                     <div class="product-slider">
-                        <div><img class="img-fluid" src="./images/3.png" alt="Product image 1"></div>
-                        <div><img class="img-fluid"  src="./images/2.png" alt="Product image 2"></div>
-                        <div><img class="img-fluid"  src="./images/Product Image (8).png" alt="Product image 3"></div>
-                        <div><img class="img-fluid"  src="./images/6png.png" alt="Product image 4"></div>
+                        <div><img class="img-fluid" src=" {{ asset('frontendstyle/images/3.png ') }}" alt="Product image 1"></div>
+                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/2.png ') }}" alt="Product image 2"></div>
+                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/Product Image (8).png ') }}" alt="Product image 3"></div>
+                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/6png.png ') }}" alt="Product image 4"></div>
                     </div>
 
                     <div class="product-thumbnail">
-                        <div><img class="img-fluid"  src="./images/3.png" alt="Product thumbnail 1"></div>
-                        <div><img class="img-fluid"  src="./images/2.png" alt="Product thumbnail 2"></div>
-                        <div><img class="img-fluid"  src="./images/4.png" alt="Product thumbnail 3"></div>
-                        <div><img class="img-fluid"  src="./images/6png.png" alt="Product thumbnail 4"></div>
+                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/3.png ') }}" alt="Product thumbnail 1"></div>
+                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/2.png ') }}" alt="Product thumbnail 2"></div>
+                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/4.png ') }}" alt="Product thumbnail 3"></div>
+                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/6.png ') }}" alt="Product thumbnail 4"></div>
                     </div>
                 </div>
             </div>
@@ -386,7 +90,7 @@
                 <div class="row">
                  <div class="col-lg-5 col-4">
                 <div class="brand-info">
-                    Brand: <img class="img-fluid" src="./images/Group 19.png" alt="">
+                    Brand: <img class="img-fluid" src=" {{ asset('frontendstyle/images/Group 19.png ') }}" alt="">
                 </div>
               </div>
               <div class="col-lg-7  col-8 d-flex ">
@@ -581,92 +285,13 @@
   
   
   <!-- email ends -->
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <footer class="shopery-footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-about">
-                <h3>About Shopery</h3>
-                <p>Maind during monitor anim laberini mobiletie but it provides junior BA, sport laberinum morgue, congue nice.</p>
-                <div class="contact-info">
-                    <p>(98) 595-018</p>
-                    <p>Privacy@gmail.com</p>
-                </div>
-            </div>
-            
-            <div class="footer-links">
-                <div class="links-column">
-                    <h4>My Account</h4>
-                    <ul>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order History</a></li>
-                        <li><a href="#">Shaping Cart</a></li>
-                        <li><a href="#">Weather</a></li>
-                        <li><a href="#">Settings</a></li>
-                    </ul>
-                </div>
-                
-                <div class="links-column">
-                    <h4>Helps</h4>
-                    <ul>
-                        <li><a href="#">Content</a></li>
-                        <li><a href="#">Total</a></li>
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Trade Order</a></li>
-                    </ul>
-                </div>
-                
-                <div class="links-column">
-                    <h4>Proxy</h4>
-                    <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Product</a></li>
-                        <li><a href="#">Products Details</a></li>
-                    </ul>
-                </div>
-                
-                <div class="links-column">
-                    <h4>Instagram</h4>
-                    <a href=""><img class="img-fluid" src="./images/Instagram (1).png" alt=""></a>     
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2023 Shopery. All rights reserved.</p>
-        </div>
-    </div>
-  </footer>
-  
-  
-  
-  
+@endsection
+
+
+@push('scripts')
+<script src=" {{ asset('frontendstyle/js/Details.js') }} "></script>
+@endpush
 
 
 
 
-
-
-
-
-
-  </main>
-  
-<script src="./js/jquery-3.7.1.min.js"></script>
-<script src="./js/bootstrap.bundle.min.js"></script>
-<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
-<script src="./js/slick.min.js"></script>
-<script src="./js/Details.js"></script>
-</body>
-</html>

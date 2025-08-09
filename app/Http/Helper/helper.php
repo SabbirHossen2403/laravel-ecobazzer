@@ -33,6 +33,16 @@ if (!function_exists('StatusBadge')) {
         }
     }
 }
+if (!function_exists('stock_status')) {
+    function getstock_status($status , $route = '#')
+    {
+        if ($status === 0) {
+            echo '<a href="'.$route.'" class="btn btn-rounded-danger btn-sm w-24 me-1 mb-2">Stock Out</a>';
+        } elseif ($status === 1) {
+            echo '<a href="'.$route.'" class="btn btn-rounded-success btn-sm w-24 me-1 mb-2">Stock in</a>';
+        }
+    }
+}
 
 
 if (!function_exists('getimage')) {
