@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category:id,category_name')->orderBy('status', 'DESC')->latest()->select('id','title', 'featured_img','category_id','price','selling_price','stock','sku','status','featured')->get();
+        $products = Product::with('category:id,category_name', 'brand:id,title,image')->orderBy('status', 'DESC')->latest()->select('id','title', 'featured_img','category_id','price','selling_price','stock','sku','status','featured')->get();
         return view('backend.product.index', compact('products')); // Assuming you 
     }
 

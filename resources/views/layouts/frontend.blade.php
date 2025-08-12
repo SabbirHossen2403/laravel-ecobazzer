@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ env('APP_NAME') }} - @yield( 'title', "All in one place " )</title>
-    <meta name="title" content="  {{ env('APP_NAME') }}  @yield( 'title',"-All in one place " ) " >
+    <meta name="title" content="  {{ env('APP_NAME') }}  @yield( 'title',"-All in one place" ) " >
     <meta name="description" content="Naturall produced Vegetables and Fruits" />
     <meta name="name" content="Sabbir hossen">
     <link rel="shortcut icon" href="{{ asset('frontendstyle/images/plant 1.png') }}" type="image/x-icon">
@@ -199,7 +199,7 @@
                   
                   </li>
                   <li><a  href="{{ route('frontend.index')}}" class="active1" >Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                  <li><a href="{{ route('frontend.shop') }}">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
+                  <li><a href="{{ route('frontend.category_archive') }}">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="./16_Checkout.html">Checkout<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="{{ route('frontend.details')}}">Details<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="">About Us</a></li>

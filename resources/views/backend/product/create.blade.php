@@ -95,22 +95,6 @@
 
                         </div>
 
-                        <div class="form-group mt-5">
-                            <label for="short_details" class="mb-2"> <strong> Product Short Details :</strong> </label>
-                            <textarea name="short_details" id="short_details" class="form-control mt-3" placeholder="Product Short Details"></textarea>
-
-                        </div>
-                        <div class="form-group mt-5">
-                            <label for="long_details" class="mb-2"> <strong> Product Long Details :</strong> </label>
-                            <textarea name="long_details" id="long_details" class="form-control mt-3" placeholder="Product Short Details"></textarea>
-
-                        </div>
-                        <div class="form-group mt-5">
-                            <label for="additional_info" class="mb-2"> <strong> Additonla Info :</strong> </label>
-                            <textarea name="additional_info" id="additional_info" class="form-control mt-3" placeholder="Product Short Details"></textarea>
-
-                        </div>
-
 
                         <div class="row mt-5 mb-5">
                             <div class="col-lg-4">
@@ -152,6 +136,25 @@
                                 </label>
                             </div>
                         </div>
+
+
+
+                        <div class="form-group mt-5">
+                            <label for="short_details" class="mb-2"> <strong> Product Short Details :</strong> </label>
+                            <textarea name="short_details" id="short_details" class="form-control mt-3" placeholder="Product Short Details"></textarea>
+
+                        </div>
+                        <div class="form-group mt-5">
+                            <label for="long_details" class="mb-2"> <strong> Product Long Details :</strong> </label>
+                            <textarea name="long_details" id="long_details" class="form-control mt-3" placeholder="Product Short Details"></textarea>
+
+                        </div>
+                        <div class="form-group mt-5 mb-5">
+                            <label for="additional_info" class="mb-2"> <strong> Additonla Info :</strong> </label>
+                            <textarea name="additional_info" id="additional_info" class="form-control mt-3" placeholder="Product Short Details"></textarea>
+
+                        </div>
+
 
 
 

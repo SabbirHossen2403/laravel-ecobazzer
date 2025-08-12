@@ -2,16 +2,21 @@ $(document).ready(function(){
     $('.product-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
+          autoplay: true,
+  autoplaySpeed: 2500,
         arrows: false,
         fade: true,
+        dots : true,
         asNavFor: '.product-thumbnail'
     });
     
     $('.product-thumbnail').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
+        slidesToShow: 3,
+         autoplay: true,
+  autoplaySpeed: 2500,
+        slidesToScroll: 2,
         asNavFor: '.product-slider',
-        dots: false,
+        dots: true,
         centerMode: false,
         focusOnSelect: true,
         arrows: false,
@@ -30,6 +35,24 @@ $(document).ready(function(){
             }
         ]
     });
+
+
+
+$('.prodcutrow').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+   dots: true,
+    arrows: false,
+});
+
+
+
+
+
+
+
 });
 
 

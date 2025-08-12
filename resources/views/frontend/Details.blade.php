@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('frontendstyle/css/Details.css') }}"> 
     <link rel="stylesheet" href="{{ asset('frontendstyle/css/Detailsresponsive.css') }}"> 
 @endpush
+@section('title', $product->title ?? 'Details')
 @section('content')
     
 
@@ -16,7 +17,7 @@
       <li><iconify-icon icon="weui:arrow-filled" width="12" height="24"></iconify-icon></li>
       <li><a href="">Categories</a></li>
       <li><iconify-icon icon="weui:arrow-filled" width="12" height="24"></iconify-icon></li>
-      <li><a class="green" href="">Vegetables</a></li>
+      <li><a class="green" href="">{{ $product->title}}</a></li>
     </ul>
     </div>
     </section>
@@ -35,24 +36,46 @@
             <div class="col-lg-5  leftsite">
                 <div class="product-slider-wrapper"> <!-- Added wrapper for positioning -->
                     <div class="product-slider">
-                        <div><img class="img-fluid" src=" {{ asset('frontendstyle/images/3.png ') }}" alt="Product image 1"></div>
-                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/2.png ') }}" alt="Product image 2"></div>
-                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/Product Image (8).png ') }}" alt="Product image 3"></div>
-                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/6png.png ') }}" alt="Product image 4"></div>
-                    </div>
+                        <div><img class="img-fluid" src=" {{ getimage( $product->featured_img ) }}" alt="{{ $product->title}}"></div>
+                        
+                        @if (count(json_decode($product->gallery_img ?? '[]')) > 0)
+                        @foreach (json_decode($product->gallery_img ?? '[]') as $img)
+                        <div><img class="img-fluid"  src=" {{ getimage($img) }}" alt="{{ $product->title}}"></div>
+
+
+                        @endforeach
+                            
+                        @endif
+                        
+                       </div>
 
                     <div class="product-thumbnail">
-                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/3.png ') }}" alt="Product thumbnail 1"></div>
-                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/2.png ') }}" alt="Product thumbnail 2"></div>
-                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/4.png ') }}" alt="Product thumbnail 3"></div>
-                        <div><img class="img-fluid"  src=" {{ asset('frontendstyle/images/6.png ') }}" alt="Product thumbnail 4"></div>
-                    </div>
+                        <div><img class="img-fluid"  src=" {{ getimage( $product->featured_img ) }}" alt="{{ $product->title}}"></div>
+                       
+                       
+                       
+                        @if (count(json_decode($product->gallery_img ?? '[]')) > 0)
+                        @foreach (json_decode($product->gallery_img ?? '[]') as $img)
+                        <div><img class="img-fluid"  src="{{ getimage( $img ) }}" alt="{{ $product->title}}"></div>
+
+
+                        @endforeach
+                            
+                        @endif
+                        
+                       
+                       </div>
                 </div>
             </div>
             <div class="col-lg-7 col-12">
               <div class="headingcabbage d-flex">
-              <h1>Chinese Cabbage</h1>
-              <h6 id="Stock">In Stock</h6>
+              <h1>{{ $product->title}}</h1>
+              @if ( $product->stock)
+              <h6 class="Stock-in">In Stock</h6>
+              @else
+              <h6 class="Stock-out">Out of Stock</h6>
+                  
+              @endif
             </div>
               <div class="review d-flex justify-content-start">
                
@@ -72,7 +95,7 @@
                 <i id="dot" class="fa-solid fa-circle" style="color: #9ca1ab; font-size: 5px;"></i>          
               <div class="sku d-flex ">
               <h6>SKU:</h6>
-              <span>2,51,594</span>
+              <span>{{ $product->sku }}</span>
             </div>
               
               </div>
@@ -82,15 +105,22 @@
            
               <div class="product-details">
                 <div class="price-container">
-                  <div class="original-price">$48.00</div>
-                    <div class="current-price">$17.28</div>
-                    <div class="discount-badge">64% Off</div>
+                  @if ($product->selling_price)
+                  <div class="current-price">{{ number_format($product->selling_price,2)}}৳</div>
+                      <div class="original-price">{{ number_format($product->price,2)}}৳</div>
+                    <div class="discount-badge">
+                      {{ round(100 - ((100/$product->price) * $product->selling_price))}}
+                      % Off</div>
+                    @else
+                    <div class="original-price">{{ number_format($product->price,2)}}৳</div>
+                  @endif
+                  
                 </div>
 
                 <div class="row">
                  <div class="col-lg-5 col-4">
                 <div class="brand-info">
-                    Brand: <img class="img-fluid" src=" {{ asset('frontendstyle/images/Group 19.png ') }}" alt="">
+                   <a href="">Brand: <img class="img-fluid" src=" {{ getimage($product->brand->brand_icon) }}" alt=""> </a> 
                 </div>
               </div>
               <div class="col-lg-7  col-8 d-flex ">
@@ -117,7 +147,7 @@
               </div>
               </div>
 
-              <p id="aptent">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum. Nulla varius magna a consequat pulvinar. </p>
+              <p id="aptent"> {!!$product->short_details!!} </p>
                 <div class="add-to-cart lineheight">
                     <div class="quantity-selector d-flex">
                         <button class="quantity-btn minus">-</button>
@@ -161,63 +191,36 @@
   <div class="container ">
     <div class="row">
       <div class="product-tabs d-flex justify-content-center">
+        @if (!empty($product->long_details))
         <button class="tab-btn active" data-tab="descriptions">Descriptions</button>
-        <button class="tab-btn" data-tab="additional">Additional Information</button>
+        @endif
+        @if (!empty($product->additional_info))
+          <button class="tab-btn" data-tab="additional">Additional Information</button>
+        @endif
+
         <button class="tab-btn" data-tab="feedback">Customer Feedback</button>
-    </div>
-    
-    <div class="tab-content active" id="descriptions">
-        <p>Chinese cabbage is a leafy vegetable commonly used in East Asian cuisine. It has a mild flavor and is rich in vitamins A, C, and K. This organic variety is grown without synthetic pesticides or fertilizers, making it a healthy choice for your family.</p>
-    </div>
-    
-    <div class="tab-content" id="additional">
-        <table class="info-table">
-            <tr>
-                <td>Weight:</td>
-                <td>03</td>
-            </tr>
-            <tr>
-                <td>Color:</td>
-                <td>Green</td>
-            </tr>
-            <tr>
-                <td>Type:</td>
-                <td>Organic</td>
-            </tr>
-            <tr>
-                <td>Category:</td>
-                <td>Vegetables</td>
-            </tr>
-            <tr>
-                <td>Stock Status:</td>
-                <td>Available (5,413)</td>
-            </tr>
-            <tr>
-                <td>Tags:</td>
-                <td>Vegetables, Healthy, Chinese, Cabbage, Green Cabbage</td>
-            </tr>
-        </table>
-    </div>
-    
-    <div class="tab-content" id="feedback">
-        <p>Customer feedback will be displayed here.</p>
-    </div>
-    
-    <!-- <div class="highlight-badges">
-        <div class="highlight-badge">
-            <h4>64% Discount</h4>
-            <p>Limited time offer</p>
+      </div>
+      @if (!empty($product->long_details))
+      <div class="tab-content active" id="descriptions">
+          <p>{!! $product->long_details !!}</p>
+      </div>
+      @endif
+      @if (!empty($product->additional_info))
+        <div class="tab-content" id="additional">
+          <table class="info-table">
+              <tr>
+                  {!! $product->additional_info !!}
+              </tr>
+          </table>
         </div>
-        <div class="highlight-badge">
-            <h4>100% Organic</h4>
-            <p>Certified organic produce</p>
-        </div>
-        <div class="highlight-badge">
-            <h4>Quality Guarantee</h4>
-            <p>Fresh from our farms</p>
-        </div>
-    </div> -->
-</div>
+      @endif
+      
+      
+            <div class="tab-content" id="feedback">
+          <p>Customer feedback will be displayed here.</p>
+      </div>  
+      
+  
     </div>
   </div>
 </section>
@@ -226,6 +229,83 @@
 
 <!-- tab end -->
 
+
+<!-- related start -->
+<section id="related">
+  <div class="container">
+    <h2 class="text-center mb-4"> Related Products</h2>
+    <div class="row prodcutrow">
+                        @forelse ($relatedProducts as $relatedProduct)
+                            <div class="col-lg-3 productcard">
+
+                                <div class="card h-100">
+                                    <a href="{{ route('frontend.product.show', $relatedProduct->slug) }}"> <img src="{{ getimage($relatedProduct->featured_img) }}"
+                                            class="card-img card-img-top" alt="..."> </a>
+                                    <div class="card-body">
+                                        <a href="{{ route('frontend.product.show', $relatedProduct->slug) }}">
+                                            <h4 class="card-text">{{ $relatedProduct->title }}</h4>
+                                        </a>
+                                        <a class="d-flex pricetext" href="{{ route('frontend.product.show', $relatedProduct->slug) }}">
+                                            @if ($relatedProduct->selling_price)
+                                                <h5 class="card-title">{{ number_format($relatedProduct->selling_price, 2) }}৳
+                                                </h5>
+                                                <span>{{ number_format($relatedProduct->price, 2) }}৳</span>
+                                            @else
+                                                <h5 class="card-title">{{ number_format($relatedProduct->price, 2) }}৳</h5>
+                                            @endif
+
+
+                                        </a>
+                                        <span>
+                                            <div class="rating">
+                                                <input value="5" name="rate" id="star5" type="radio">
+                                                <label title="text" for="star5"></label>
+                                                <input value="4" name="rate" id="star4" type="radio">
+                                                <label title="text" for="star4"></label>
+                                                <input value="3" name="rate" id="star3" type="radio"
+                                                    checked="">
+                                                <label title="text" for="star3"></label>
+                                                <input value="2" name="rate" id="star2" type="radio">
+                                                <label title="text" for="star2"></label>
+                                                <input value="1" name="rate" id="star1" type="radio">
+                                                <label title="text" for="star1"></label>
+                                            </div>
+                                        </span>
+
+                                        <a class="addToCart" href=""><i
+                                                class="fa-solid fa-cart-shopping cartbutton"></i></a>
+
+                                        <div class="action-icons" id="actionIcons">
+                                            <a class="icon-button cart-icon">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </a>
+                                            <a class="icon-button like-icon">
+                                                <i class="fa-solid fa-heart"></i>
+                                            </a>
+                                            <a class="icon-button view-icon">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            <a class="icon-button share-icon">
+                                                <i class="fa-solid fa-share-nodes"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        @empty
+                            <h4 class="text-danger noItems">NO ITEMS FOUND</h4>
+                        @endforelse
+                    </div>
+
+  </div>
+  
+
+</section>
+
+
+<!-- related end -->
 
 
 
@@ -290,6 +370,9 @@
 
 @push('scripts')
 <script src=" {{ asset('frontendstyle/js/Details.js') }} "></script>
+<script>
+
+</script>
 @endpush
 
 
