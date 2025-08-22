@@ -10,6 +10,7 @@ Route::controller(FrontendController::class)->name('frontend.')->group(function(
     Route::get('/shop/{category_url?}', 'categoryArchive')->name('category_archive');
     Route::get('/product/{slug}', 'showProduct')->name('product.show');
     Route::get('/details', 'details')->name('details');
+    Route::post('/review-submite', 'reviewSubmite')->name('review.submite');
 
 });
 

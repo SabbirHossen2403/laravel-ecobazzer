@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class FrontendController extends Controller
     // }
 
     function details() {
-        return view('frontend.details');
+        return view('frontend.details' );
     }
 
 
@@ -56,6 +57,22 @@ function showProduct($slug){
     return view('frontend.details', compact('product', 'relatedProducts'));
 }
 
+function reviewSubmite(Request $request){
+    $request->validate([
+        'rating' => 'required|min:0|max:5 ',
+        'reviewText' => 'nullable',
+
+    ]);
+
+    Review::create([
+        'product_id' => $request->product_id,
+        'user_id' => auth()->user()->id,
+        'rating' => $request->rating,
+        'reviewText' => $request->reviewText,
+        
+    ]);
+    return redirect()->back()->with('success', 'Review submitted successfully');
+}
 
 
 

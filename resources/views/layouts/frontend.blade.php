@@ -12,6 +12,17 @@
     <link rel="stylesheet" href="{{ asset('frontendstyle/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontendstyle/css/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontendstyle/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontendstyle/css/frontendlayout.css') }}">
+    <style>
+      .midelheader .searchdiv {
+        width: 500px;
+      }
+      .midelheader .form-control {
+        width: 400px;
+      }
+
+      
+    </style>
     @stack('style')
   </head>
   <body>
@@ -69,17 +80,24 @@
             >
               <a href=""><img src="{{ asset('frontendstyle/images/Logo (1).png') }}" alt="" /></a>
             </div>
-            <div class="col-lg-6 order-3 order-lg-2">
-              <form class="d-flex" role="search">
-                <input
+            <div class="searchdiv col-lg-6 order-3 order-lg-2 d-flex justify-content-end w-100">
+              <form class="d-flex" role="search" method="GET" action=" {{ route('frontend.category_archive') }}">
+                <div class="search">
+ <input
                   class="form-control"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  name="search"
                 />
+                </div>
+               
                 <button class="btn btn-outline-success" type="submit">
                   Search
                 </button>
+
+
+
               </form>
             </div>
             <div
@@ -198,8 +216,8 @@
 
                   
                   </li>
-                  <li><a  href="{{ route('frontend.index')}}" class="active1" >Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                  <li><a href="{{ route('frontend.category_archive') }}">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
+                  <li><a  href="{{ route('frontend.index')}}" class="{{ request()->routeIs('frontend.index') ? 'active1' : '' }}" >Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
+                  <li><a href="{{ route('frontend.category_archive') }}" class="{{ request()->routeIs('frontend.category_archive') ? 'active1' : '' }}">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="./16_Checkout.html">Checkout<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="{{ route('frontend.details')}}">Details<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="">About Us</a></li>
@@ -360,7 +378,31 @@
     <script src="{{ asset('frontendstyle/js/slick.min.js')}}"></script>
     <script src="{{ asset('frontendstyle/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-   
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+            const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+        </script>
+
+
+        @if (session('success'))
+            <script>
+                Toast.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}'
+                });
+            </script>
+
+@endif
     @stack('scripts')
   </body>
 </html>

@@ -217,8 +217,83 @@
       
       
             <div class="tab-content" id="feedback">
-          <p>Customer feedback will be displayed here.</p>
-      </div>  
+<div class="row">
+  <div class="@auth col-lg-8 @else col-lg-12 @endauth">
+    <div class="reviewbox">
+      <div class="topsection d-flex">
+        <img src="{{asset('frontendstyle/images/Image (11).png')}}" alt="">
+
+        <h4 class="reviewheading">Kristin Watson</h4> 
+         <div class="rating">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text"></label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text"></label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text"></label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text"></label>
+                  <input checked="" type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text"></label>
+                </div>
+                <span class="create_date">2 months ago</span>
+              </div>
+              <p class="text-start">Duis at ullamcorper nulla, eu dictum eros.</p>
+    </div>
+  </div>
+
+@auth
+      
+
+  <div class="col-lg-4 userreviewform">
+
+<form id="reviewForm" action="{{ route('frontend.review.submite') }}" method="POST" >
+    @csrf
+    <div class="mb-4 text-center">
+        <label class="form-label d-block">Your Rating</label>
+        <!-- Number input -->
+        <input type="number" class="form-control mb-3" id="numberRating" name="rating" placeholder="Enter your rating" min="1" max="5" step="0.1">
+
+        <input type="hidden" name="product_id" value="{{$product->id}}">
+        <!-- Star rating -->
+        <div class="rating" id="starRating">
+            <span class="star"><i class="fas fa-star"></i></span>
+            <span class="star"><i class="fas fa-star"></i></span>
+            <span class="star"><i class="fas fa-star"></i></span>
+            <span class="star"><i class="fas fa-star"></i></span>
+            <span class="star"><i class="fas fa-star"></i></span>
+
+            {{-- <input type="radio" id="star5" name="rating" value="5" />
+            <label for="star5"><i class="fas fa-star"></i></label>
+
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" title="4 stars"></label>
+
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" title="3 stars"></label>
+
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" title="2 stars"></label>
+
+            <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" title="1 star"></label> --}}
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <label for="reviewText" class="form-label">Your Review</label>
+        <textarea class="form-control" id="reviewText" name="reviewText" rows="5" placeholder="Tell us more about your experience..." maxlength="500"></textarea>
+        <div class="character-count"><span id="charCount">0</span>/500 characters</div>
+    </div>
+
+    <button type="submit" class="btn-submit">Submit Review</button>
+</form>
+</div>
+@endauth
+
+
+</div>
+</div>  
       
   
     </div>
@@ -371,7 +446,41 @@
 @push('scripts')
 <script src=" {{ asset('frontendstyle/js/Details.js') }} "></script>
 <script>
+const numberInput = document.getElementById('numberRating');
+const stars = document.querySelectorAll('#starRating .star');
+const reviewText = document.getElementById('reviewText');
+const charCount = document.getElementById('charCount');
 
+// Update stars based on number input
+numberInput.addEventListener('input', () => {
+    let value = parseFloat(numberInput.value);
+    if (value > 5) value = 5;
+    if (value < 0) value = 0;
+
+    stars.forEach((star, index) => {
+        const starValue = index + 1;
+        const icon = star.querySelector('i');
+
+        if (value >= starValue) {
+            // Full star
+            icon.className = 'fas fa-star';
+            icon.style.color = 'gold';
+        } else if (value > index && value < starValue) {
+            // Half star
+            icon.className = 'fas fa-star-half-alt';
+            icon.style.color = 'gold';
+        } else {
+            // Empty star
+            icon.className = 'fas fa-star';
+            icon.style.color = '#ddd';
+        }
+    });
+});
+
+// Character count update
+reviewText.addEventListener('input', () => {
+    charCount.textContent = reviewText.value.length;
+});
 </script>
 @endpush
 
