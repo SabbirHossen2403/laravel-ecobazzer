@@ -93,9 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    const addToCartBtn = document.querySelector('.add-to-cart-btn');
-    addToCartBtn.addEventListener('click', function() {
-        const quantity = parseInt(quantityInput.value);
-        alert(`Added ${quantity} Chinese Cabbage(s) to your cart!`);
-    });
+    // const addToCartBtn = document.querySelector('.add-to-cart-btn');
+    // addToCartBtn.addEventListener('click', function() {
+    //     const quantity = parseInt(quantityInput.value);
+    //     alert(`Added ${quantity} Chinese Cabbage(s) to your cart!`);
+    // });
 });

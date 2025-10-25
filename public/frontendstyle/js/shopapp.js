@@ -28,46 +28,61 @@ document.addEventListener('DOMContentLoaded', function() {
     const sliderRange = document.querySelector(".slider-range");
     const priceMinDisplay = document.getElementById("price-min");
     const priceMaxDisplay = document.getElementById("price-max");
-    const toggleArrow = document.querySelector(".toggle-arrow");
-    const priceHeader = document.querySelector(".price-header");
+
+    const minLimit = parseInt(sliderMin.min);
+    const maxLimit = parseInt(sliderMax.max);
+
+    // Initially mark as untouched
+    sliderMin.dataset.touched = "false";
+    sliderMax.dataset.touched = "false";
 
     function updateSlider() {
-        const minValue = parseInt(sliderMin.value);
-        const maxValue = parseInt(sliderMax.value);
-        
-        // Update the displayed range
-        const minPercent = (minValue / 15000) * 100;
-        const maxPercent = (maxValue / 15000) * 100;
-        sliderRange.style.left = minPercent + "%";
-        sliderRange.style.width = (maxPercent - minPercent) + "%";
-        
-        // Update the displayed prices
+        let minValue = parseInt(sliderMin.value);
+        let maxValue = parseInt(sliderMax.value);
+
+        // Ensure min <= max
+        if (minValue > maxValue) minValue = maxValue;
+        if (maxValue < minValue) maxValue = minValue;
+
+        const minPercent = ((minValue - minLimit) / (maxLimit - minLimit)) * 100;
+        const maxPercent = ((maxValue - minLimit) / (maxLimit - minLimit)) * 100;
+
+        // Initially fill whole slider
+        if (sliderMin.dataset.touched === "false" && sliderMax.dataset.touched === "false") {
+            sliderRange.style.left = "0%";
+            sliderRange.style.width = "100%";
+        } else {
+            sliderRange.style.left = minPercent + "%";
+            sliderRange.style.width = (maxPercent - minPercent) + "%";
+        }
+
         priceMinDisplay.textContent = minValue.toLocaleString();
         priceMaxDisplay.textContent = maxValue.toLocaleString();
     }
 
-    // Prevent min slider from going above max
     sliderMin.addEventListener("input", function() {
+        sliderMin.dataset.touched = "true";
+        sliderMax.dataset.touched = "true";
+
         if (parseInt(this.value) > parseInt(sliderMax.value)) {
             this.value = sliderMax.value;
         }
         updateSlider();
     });
 
-    // Prevent max slider from going below min
     sliderMax.addEventListener("input", function() {
+        sliderMin.dataset.touched = "true";
+        sliderMax.dataset.touched = "true";
+
         if (parseInt(this.value) < parseInt(sliderMin.value)) {
             this.value = sliderMin.value;
         }
         updateSlider();
     });
 
-    // Toggle arrow animation
-    ;
-
-    // Initialize the slider
     updateSlider();
 });
+
 
 
 

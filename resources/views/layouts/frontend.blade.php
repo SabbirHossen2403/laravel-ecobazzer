@@ -21,8 +21,21 @@
         width: 400px;
       }
 
-      
-    </style>
+     .cursor-dot {
+position: fixed; left:0; top:0; width:12px; height:12px;
+border-radius:50%; background: #5de6de;
+box-shadow: 0 0 12px rgba(93,230,222,0.8), 0 0 20px rgba(255,154,158,0.5);
+pointer-events:none; z-index:9999;
+transition: transform 0.12s ease, background 0.2s ease;
+}
+.cursor-outline {
+position: fixed; left:0; top:0; width:40px; height:40px;
+border-radius:50%; border:2px solid #ff6b6b;
+pointer-events:none; z-index:9998;
+transition: transform 0.08s ease;
+}
+
+ </style>
     @stack('style')
   </head>
   <body>
@@ -62,7 +75,7 @@
                 </li>
 
                 <li>
-                  <a href="">Sign In / Sign Up</a>
+                  <a href="{{ route('customer.login') }}">Sign In / Sign Up</a>
                 </li>
               </ul>
             </div>
@@ -80,16 +93,23 @@
             >
               <a href=""><img src="{{ asset('frontendstyle/images/Logo (1).png') }}" alt="" /></a>
             </div>
-            <div class="searchdiv col-lg-6 order-3 order-lg-2 d-flex justify-content-end w-100">
+            <div class="col-lg-6 order-3 order-lg-2 d-flex   searchdiv"> <!-- w-100 -->
               <form class="d-flex" role="search" method="GET" action=" {{ route('frontend.category_archive') }}">
-                <div class="search">
+                <div class="search position-relative">
  <input
                   class="form-control"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  value="{{ request()->search }}"
                   name="search"
                 />
+
+                <div class="searchResult position-absolute bg-white w-100 shadow" style="padding: 20px; z-index: 1000; display: none;">
+                  <ul>
+                    
+                  </ul>
+                </div>
                 </div>
                
                 <button class="btn btn-outline-success" type="submit">
@@ -103,7 +123,7 @@
             <div
               class="col-lg-4 col-6 text-end order-2 order-lg-3 d-none d-lg-block"
             >
-              <ul class="d-flex">
+              <ul class="d-flex justify-content-center">
                 <li><a href="">
                   <iconify-icon
                     icon="solar:heart-outline"
@@ -118,18 +138,18 @@
                     height="40"
                   ></iconify-icon>
                 </li>
-                <li class="cartprent"><a href="./cart.html">
+                <li class="cartprent"><a href="{{ route('checkout') }}">
                   <iconify-icon
                     icon="solar:bag-outline"
                     width="40"
                     height="40"
                   ></iconify-icon>
-                  <span class="cartcounter">2</span>
+                  <span class="cartcounter">{{ $cart['cartCount'] }}</span>
                 </a> </li>
 
-                <li class="para1"><a href="./cart.html">
+                <li class="para1"><a href="{{ route('checkout') }}">
                   <p>Shopping cart:</p>
-                  <h5>$57.00</h5>
+                  <h5>{{ number_format($cart['cartTotal'],2) }}৳</h5>
                 </a></li>
               </ul>
             </div>
@@ -218,7 +238,7 @@
                   </li>
                   <li><a  href="{{ route('frontend.index')}}" class="{{ request()->routeIs('frontend.index') ? 'active1' : '' }}" >Home<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="{{ route('frontend.category_archive') }}" class="{{ request()->routeIs('frontend.category_archive') ? 'active1' : '' }}">Shop<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
-                  <li><a href="./16_Checkout.html">Checkout<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
+                  <li><a href="{{ route('checkout')}}" class="{{ request()->routeIs('checkout') ? 'active1' : '' }}">Checkout<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="{{ route('frontend.details')}}">Details<iconify-icon icon="fe:arrow-down" width="24" height="24"></iconify-icon></a></li>
                   <li><a href="">About Us</a></li>
                   <li><a href="">Contact Us</a></li>
@@ -368,8 +388,94 @@
 
  <!-- shopery-footer ends -->
 
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-outline" id="cursorOutline"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+(function($){
+const $dot = $('#cursorDot');
+const $outline = $('#cursorOutline');
+const $trail = $('#cursorTrail');
+
+
+let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+let outlineX = mouseX, outlineY = mouseY;
+
+
+function lerp(a,b,n){ return (1-n)*a + n*b; }
+
+
+$(window).on('mousemove', function(e){
+mouseX = e.clientX;
+mouseY = e.clientY;
+$dot.css('transform', `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`);
+spawnTrail(mouseX, mouseY);
+});
+
+
+$(window).on('mousedown', function(e){
+burstSparkles(e.clientX, e.clientY, 10);
+});
+
+
+function animate(){
+outlineX = lerp(outlineX, mouseX, 0.5); // Faster follow
+outlineY = lerp(outlineY, mouseY, 0.5);
+$outline.css('transform', `translate(${outlineX}px, ${outlineY}px) translate(-50%,-50%)`);
+requestAnimationFrame(animate);
+}
+animate();
+
+
+function spawnTrail(x,y){
+const $t = $('<div class="trail-item"></div>');
+const s = 5+Math.random()*8;
+const hue = Math.floor(Math.random()*360);
+$t.css({left:x+'px',top:y+'px',width:s+'px',height:s+'px',background:`hsl(${hue},80%,65%)`,opacity:0.8});
+$trail.append($t);
+const life = 600;
+const start = performance.now();
+function tick(now){
+const t = (now-start)/life;
+if(t>=1){$t.remove();return;}
+const opacity = 0.8*(1-t);
+const scale = 1-(t*0.6);
+$t.css({transform:`translate(${x}px,${y-(t*30)}px) translate(-50%,-50%) scale(${scale})`,opacity:opacity});
+requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+}
+
+
+function burstSparkles(x,y,count){
+for(let i=0;i<count;i++){
+const $s = $('<div class="trail-item"></div>');
+const size = 4+Math.random()*6;
+const hue = Math.floor(Math.random()*360);
+$s.css({left:x+'px',top:y+'px',width:size+'px',height:size+'px',background:`hsl(${hue},100%,70%)`});
+$trail.append($s);
+const angle = Math.random()*Math.PI*2;
+const speed = 50+Math.random()*60;
+const vx = Math.cos(angle)*speed; const vy = Math.sin(angle)*speed;
+const life = 700;
+const start = performance.now();
+function tick(now){
+const t = (now-start)/life;
+if(t>=1){$s.remove();return;}
+const px = x+vx*t; const py = y+vy*t+t*t*30;
+const opacity = 1-t;
+const scale = 1-(t*0.7);
+$s.css({transform:`translate(${px}px,${py}px) translate(-50%,-50%) scale(${scale})`,opacity:opacity});
+requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+}
+}
+})(jQuery);
+</script>
 
 
     <!-- js start hear  -->
@@ -391,7 +497,97 @@
     toast.onmouseleave = Swal.resumeTimer;
   }
 });
+
+
         </script>
+
+
+
+
+<script>
+$('.search input').keyup(function() {
+    const searchValue = $(this).val();
+
+    if (searchValue.length >= 3) {
+
+        setTimeout(() => {
+$.ajax({
+    url: "{{ route('frontend.search') }}",
+    type: "GET",
+    data: { search: searchValue},
+    success: function(response) {
+        if(response.length > 0){
+          let listItems = [];
+          response.forEach(item => {
+            let url = "{{ route('frontend.product.show', '::slug') }}";
+            url = url.replace('::slug', item.slug);
+            let liItem = `<li class="my-2"><a href="${url}">${item.title}</a></li>`
+            listItems.push(liItem);
+          });
+          $('.searchResult ul').html(listItems);
+        }else{
+          $('.searchResult ul').html("No Product Found");
+          
+        }
+
+    },
+    error: function(error) {
+        console.error(error);
+    }
+
+})
+
+            $('.searchResult').slideDown();
+        }, 250); // delay 500ms
+
+    } else {
+        $('.searchResult').hide();
+    }
+});
+</script>
+
+
+        {{-- <script>
+          $('.search input').keyup(function() {
+  const searchValue =  $(this).val()
+
+  if(searchValue.length >= 3){
+
+    $.ajax({
+    url: "{{ route('frontend.search') }}",
+    type: "GET",
+    data: { search: searchValue},
+    success: function(response) {
+        if(response.length > 0){
+          let listItems = [];
+          response.forEach(item => {
+            let url = "{{ route('frontend.product.show', '::slug') }}";
+            url = url.replace('::slug', item.slug);
+            let liItem = `<li class="my-2"><a href="${url}">${item.title}</a></li>`
+            listItems.push(liItem);
+          });
+          $('.searchResult ul').html(listItems);
+        }else{
+          $('.searchResult ul').html("No Product Found");
+          
+        }
+
+    },
+    error: function(error) {
+        console.error(error);
+    }
+
+})
+
+    $('.searchResult').slideDown();
+  }else{
+    $('.searchResult').hide();
+  }
+
+});
+
+
+        </script> --}}
 
 
         @if (session('success'))
@@ -403,6 +599,7 @@
             </script>
 
 @endif
+
     @stack('scripts')
   </body>
 </html>

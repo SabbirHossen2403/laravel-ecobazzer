@@ -583,6 +583,7 @@ footer .menu {
     background-color: transparent;
     padding: 12px;
     border-radius: 8px;
+    
     /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
 }
 
@@ -595,6 +596,7 @@ footer .menu {
 
 .filter-group {
     margin-bottom: 20px;
+    overflow-y: auto;
 }
 
 .filter-group h3 {
@@ -1175,7 +1177,7 @@ color: var(--gray-scale-white);
 }
 
 .filter-group .rating:not(:checked) > label:before {
-  content: "★";
+  content: "";
 }
 
 /* Make the 4-star label red */
@@ -1189,7 +1191,7 @@ color: var(--gray-scale-white);
 .filter-group .rating:not(:checked) > label:hover,
 .filter-group .rating:not(:checked) > label:hover ~ label {
   color: #ffa723;
-  opacity: 0.7;
+
 }
 
 /* Selected stars */
@@ -1287,7 +1289,6 @@ color: var(--gray-scale-white);
   transition: all 0.3s ease;
 }
 
-
 .price-header {
   display: flex;
   justify-content: space-between;
@@ -1319,11 +1320,11 @@ color: var(--gray-scale-white);
   width: 60px;
 }
 
-
 .range-slider-container {
   position: relative;
   height: 50px;
   margin-bottom: 5px;
+  overflow: hidden;
 }
 
 .slider-track {
@@ -1338,14 +1339,14 @@ color: var(--gray-scale-white);
 }
 
 .slider-range {
-  position: absolute;
-  height: 6px;
-  background: linear-gradient(90deg, #4CAF50, #8BC34A);
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 6px;
-  z-index: 2;
-  transition: all 0.3s ease;
+    position: absolute;
+    height: 6px;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 6px;
+    z-index: 2;
+    transition: all 0.3s ease;
 }
 
 input[type="range"] {
@@ -1423,7 +1424,6 @@ input[type="range"]::-moz-range-thumb:hover {
   background: #bdc3c7;
   margin: 0 10px;
 }
-
 
 
 

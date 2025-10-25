@@ -3,6 +3,7 @@
 @push('style')
     <link rel="stylesheet" href="{{ asset('frontendstyle/css/Details.css') }}"> 
     <link rel="stylesheet" href="{{ asset('frontendstyle/css/Detailsresponsive.css') }}"> 
+    
 @endpush
 @section('title', $product->title ?? 'Details')
 @section('content')
@@ -148,16 +149,17 @@
               </div>
 
               <p id="aptent"> {!!$product->short_details!!} </p>
+              <form action="{{ route('cart.add', $product->id) }}" ">
                 <div class="add-to-cart lineheight">
                     <div class="quantity-selector d-flex">
-                        <button class="quantity-btn minus">-</button>
-                        <input type="text" class="quantity-input" value="5" min="1">
-                        <button class="quantity-btn plus">+</button>
+                        <button type="button" class="quantity-btn minus">-</button>
+                        <input type="text" class="quantity-input" name="qty" value="1" min="1">
+                        <button type="button" class="quantity-btn plus">+</button>
                     </div>
-                    <button class="add-to-cart-btn ">Add to Cart <iconify-icon class="lineheight" icon="solar:bag-linear" width="24" height="24"></iconify-icon></button>
-                      <a id="heart" href=""><iconify-icon icon="iconamoon:heart-light" width="24" height="24"></iconify-icon></a>
+                    <button type="submit" class="add-to-cart-btn ">Add to Cart <iconify-icon class="lineheight" icon="solar:bag-linear" width="24" height="24"></iconify-icon></button>
+                      <button id="heart" type="submit"><iconify-icon icon="iconamoon:heart-light" width="24" height="24"></iconify-icon></button>
                   </div>
-                
+                </form>
                 <div class="catagory d-flex">
                     <h6 >Category:</h6>
                     <p>Vegetables</p>
@@ -219,27 +221,23 @@
             <div class="tab-content" id="feedback">
 <div class="row">
   <div class="@auth col-lg-8 @else col-lg-12 @endauth">
-    <div class="reviewbox">
+    @foreach ($reviews as $review)
+    <div class="reviewbox mt-3">
       <div class="topsection d-flex">
-        <img src="{{asset('frontendstyle/images/Image (11).png')}}" alt="">
+        <img src="{{ asset('frontendstyle/images/Image (11).png') }}" alt="">
 
-        <h4 class="reviewheading">Kristin Watson</h4> 
+        <h4 class="reviewheading">{{ auth()->user()->name }}</h4> 
          <div class="rating">
-                  <input type="radio" id="star5" name="rate" value="5" />
-                  <label for="star5" title="text"></label>
-                  <input type="radio" id="star4" name="rate" value="4" />
-                  <label for="star4" title="text"></label>
-                  <input type="radio" id="star3" name="rate" value="3" />
-                  <label for="star3" title="text"></label>
-                  <input type="radio" id="star2" name="rate" value="2" />
-                  <label for="star2" title="text"></label>
-                  <input checked="" type="radio" id="star1" name="rate" value="1" />
-                  <label for="star1" title="text"></label>
+                   @for ($i = 5; $i >= 1; $i--)
+        <input type="radio" id="star{{ $i }}" name="rate{{ $review->id }}" value="{{ $i }}" {{ $review->rating == $i ? 'checked' : '' }} />
+        <label for="star{{ $i }}" title="{{ $i }} stars"></label>
+    @endfor
                 </div>
-                <span class="create_date">2 months ago</span>
+                <span class="create_date">{{ $review->created_at->diffForHumans() }}</span>
               </div>
-              <p class="text-start">Duis at ullamcorper nulla, eu dictum eros.</p>
+              <p class="text-start"> {{ $review->reviewText ?? 'No review text provided.' }}</p>
     </div>
+     @endforeach
   </div>
 
 @auth
